@@ -1,0 +1,18 @@
+
+{% extends 'layout.html' %}
+{% block content %}
+<div class = "m-5">
+    <form action = '/login' method = 'POST'>  
+        {{ form.hidden_tag() }}
+        <div class = "form-group">
+            {{ form.email.label }}
+            {{ form.email }}
+        </div><br>
+        <div class = "form-group"> 
+            {{ form.password.label }}
+            {{ form.password }}
+        </div><br>
+        <input type="submit" value="Register" class="btn btn-dark" >
+    </form>
+</div>
+{% endblock content %}

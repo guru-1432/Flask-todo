@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+
+<div class= "text-light m-5">
+    <form class = "text-dark" action = '/todo' method = 'POST'>  
+        {{ form.hidden_tag() }}
+        {{ form.todo.label }}
+        {{ form.todo }}
+        <input type="submit" value="Add" class="btn btn-dark" > <br>
+    </form>    
+    <div class = "p-3 row">
+        {% for todo in incomplete %}
+        <div class = "col-4 text-dark">
+            <form action = "{{ url_for('update_todo') }}" method = 'POST' >{{ todo.text }} 
+        </div>
+        <div class = "col-md-8">
+            <input type="submit" value="Mark as complete" class="btn btn-light btn-sm">
+            <input type = 'hidden' name = 'todo_id' value = {{ todo.id }}>
+            <input type = 'hidden' name = 'todo_status' value = 1>
+            </form>
+        </div>
+            
+        {% endfor %}    
+        <hr>
+        {% for todo in complete_data %}
+        <div class = "col-4 text-light">
+            <form action = "{{ url_for('update_todo') }}" method = 'POST' ><s>{{ todo.text }}</s>
+        </div>
+        <div class = "col-md-8">
+        <input type="submit" value="Mark as incomplete" class="btn btn-dark btn-sm">
+            <input type = 'hidden' name = 'todo_id' value = {{ todo.id }}>
+            <input type = 'hidden' name = 'todo_status' value = 0>
+            </form> 
+        </div>    
+            {% endfor %}
+        <!-- <form action = '/dbcommit' method = 'POST'><input type="submit" value = 'Save' name = 'Save' class="btn btn-dark"> </form>  -->
+    </div>
+</div>
+{% endblock content %}
