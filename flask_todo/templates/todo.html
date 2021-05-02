@@ -24,10 +24,10 @@
         {% endfor %}    
         <hr>
         {% for todo in complete_data %}
-        <div class = "col-4 text-light">
+        <div class = "col-4 text-dark">
             <form action = "{{ url_for('update_todo') }}" method = 'POST' ><s>{{ todo.text }}</s>
         </div>
-        <div class = "col-md-8">
+        <div class = "col-8">
         <input type="submit" value="Mark as incomplete" class="btn btn-dark btn-sm">
             <input type = 'hidden' name = 'todo_id' value = {{ todo.id }}>
             <input type = 'hidden' name = 'todo_status' value = 0>

@@ -25,6 +25,7 @@ class login_form(FlaskForm):
     password = PasswordField('Password',validators=[DataRequired()])
     login = SubmitField('Login') 
     
+    
 class todo_form(FlaskForm):
     todo = StringField('New Todo',validators=[DataRequired(),Length(min=2,max=30)])
     completed = BooleanField('Completed')

@@ -2,30 +2,30 @@
 {% extends 'layout.html' %}
 {% block content %}
 <div class = "m-5">
-    <form action = '/register' method = 'POST'>  
+    <form action = '/register' method = 'POST' style = 'width:500px'>  
         <div>
             {{ form.hidden_tag() }}
             <div class = "form-group ">
                 {{ form.user_name.label }}
-                {{ form.user_name }}
+                {{ form.user_name(class="form-control") }}
                 {% for error in form.user_name.errors %}
-                    <ul class = "text-warning">
+                    <ul class = "text-danger">
                         <li> {{ error }}</li>
                     </ul>
                 {% endfor %}
             </div><br>
             <div class = "form-group"> 
                 {{ form.email_address.label }}
-                {{ form.email_address }}
+                {{ form.email_address(class="form-control") }}
                 {% for error in form.email_address.errors %}
-                <ul class = "text-warning">
+                <ul class = "text-danger">
                     <li> {{ error }}</li>
                 </ul>
             {% endfor %} 
             </div><br>
             <div class = "form-group"> 
                 {{ form.password.label }}
-                {{ form.password }}
+                {{ form.password(class="form-control") }}
                 {% for error in form.password.errors %}
                 <ul class = "text-warning">
                     <li> {{ error }}</li>
@@ -34,7 +34,7 @@
             </div><br>
             <div class = "form-group"> 
                 {{ form.conform_password.label }}
-                {{ form.conform_password }}
+                {{ form.conform_password(class="form-control") }}
                 {% for error in form.conform_password.errors %}
                 <ul class = "text-warning">
                     <li> {{ error }}</li>
