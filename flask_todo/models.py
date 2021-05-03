@@ -23,3 +23,5 @@ class Todo(db.Model):
 
     def __repr__(self):
         return f'todo_id :{self.id} user_id :{user_id}'
+
+db.create_all()

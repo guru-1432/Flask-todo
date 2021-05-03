@@ -28,7 +28,7 @@ def register():
         return redirect(url_for('todo'))
     form = register_form()
     if form.validate_on_submit():
-        hashed_password = bcrypt.generate_password_hash(form.password.data)
+        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
         new_user = User(username = form.user_name.data,email = form.email_address.data,password = hashed_password)
         db.session.add(new_user)
         db.session.commit()
