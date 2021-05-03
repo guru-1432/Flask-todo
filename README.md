@@ -1,10 +1,4 @@
-## Prerequisite:
-
-` pip intall -r requirement.txt`
-
-
-# Flask Web App Tutorial
-
+# Todo App with Flask
 ## Setup & Installtion
 
 - Make sure you have Python 3.5 or above installed
