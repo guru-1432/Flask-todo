@@ -14,5 +14,4 @@ bcrypt = Bcrypt(app)
 db = SQLAlchemy(app)
 login_manager = LoginManager(app)
 
-
 from flask_todo import routes
