@@ -23,9 +23,9 @@ class register_form(FlaskForm):
 class login_form(FlaskForm):
     email = StringField('Email',validators=[DataRequired(),Email('Please enter a valid email address')]) # This User name will be used in html
     password = PasswordField('Password',validators=[DataRequired()])
-    login = SubmitField('Login') 
+    # login = SubmitField('Login') 
     
     
 class todo_form(FlaskForm):
-    todo = StringField('New Todo',validators=[DataRequired(),Length(min=2,max=30)])
+    todo = StringField('New Todo',validators=[DataRequired('Min 2 character required'),Length(max=30)])
     completed = BooleanField('Completed')

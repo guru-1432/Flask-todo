@@ -13,11 +13,10 @@ def login():
     if form.validate_on_submit():
         user = User.query.filter_by(email = form.email.data).first()
         if user and (bcrypt.check_password_hash(user.password,form.password.data)):
-            login_user(user,remember = form.remember.data)
-            print(str(form.remember.data))
+            login_user(user,remember = True)
             return redirect(url_for('todo'))
         else:
-            flash("Incorrect Passowrd please retry",'danger')
+            flash("Incorrect User Name or Passowrd please retry",'danger')
             return redirect(url_for('login'))
     else:
         return render_template('login.html',title = 'Login Page',form= form)
@@ -42,6 +41,7 @@ def register():
 def todo():
     form= todo_form()
     if form.validate_on_submit():
+        print('todo validated')
         data = Todo(text = form.todo.data,complete = False,current_user = current_user)
         db.session.add(data)
         db.session.commit()
@@ -61,17 +61,14 @@ def update_todo():
     return redirect(url_for('todo'))
     
 @app.route('/delete_all',methods = ['GET'])
-def delete_ll():
+def delete_all():
     rows_deleted = Todo.query.delete()
     db.session.commit()
     return jsonify({'rows_deleted':rows_deleted})
 
-@app.route('/delete<int:post_id>',methods = ['POST'])
-def delete():
-    if request.method == ["POST"]:
-        return f"{request.get('todo_id')}"
-    Todo.query.delete()
-    db.session.commit()
+@app.route('/delete/<arg>',methods = ['GET'])
+def delete(arg):
+    return f'sample route{arg}'    
 
 @app.route('/logout',methods = ['GET'])
 def logout():

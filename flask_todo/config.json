@@ -1,0 +1,4 @@
+{
+    "DB_URL": "sqlite:///todo.db",
+    "App_Secret_Key": "secret_key"
+  }
