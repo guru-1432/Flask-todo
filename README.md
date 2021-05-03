@@ -3,12 +3,12 @@
 
 - Make sure you have Python 3.5 or above installed
 
--Clone the repo 
+- Clone the repo 
 ```bash
 git clone <repo-url>
 ```
 
--Install all the requirement 
+- Install all the requirement 
 ```bash
 pip install -r requirements.txt
 ```
