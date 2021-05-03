@@ -66,10 +66,6 @@ def delete_all():
     db.session.commit()
     return jsonify({'rows_deleted':rows_deleted})
 
-@app.route('/delete/<arg>',methods = ['GET'])
-def delete(arg):
-    return f'sample route{arg}'    
-
 @app.route('/logout',methods = ['GET'])
 def logout():
     print((current_user.id))
