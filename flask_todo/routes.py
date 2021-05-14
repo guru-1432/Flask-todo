@@ -2,7 +2,7 @@ from flask import render_template,request,url_for,redirect,jsonify,flash
 from flask_todo import app,bcrypt,db
 from flask_todo.forms import register_form,login_form,todo_form
 from flask_todo.models import User,Todo
-from flask_login import login_user, current_user,logout_user
+from flask_login import login_user, current_user,logout_user,login_required
 
 @app.route('/')
 @app.route('/login',methods=['GET','POST'])
@@ -52,6 +52,7 @@ def todo():
             complete_data =Todo.query.filter_by(user_id = current_user.id,complete = True), form = form)
 
 @app.route('/update_todo',methods = ['POST'])
+@login_required
 def update_todo():
     todo_id=request.form.get("todo_id")
     status=request.form.get("todo_status")
@@ -71,3 +72,14 @@ def logout():
     print((current_user.id))
     logout_user()
     return redirect(url_for('login'))
+
+@app.route('/logout',methods = ['POST'])
+@login_required
+def delete_todo():
+    delete_todo = request.form.get('delete_todoid') 
+    todo_item = Todo.query.get(delete_todo)
+    # Todo.query.delete(todo_item)
+    db.session.delete(todo_item)
+    db.session.commit()
+    return redirect(url_for('todo'))
+

@@ -14,10 +14,16 @@
         <div class = "col-4 text-dark">
             <form action = "{{ url_for('update_todo') }}" method = 'POST' >{{ todo.text }} 
         </div>
-        <div class = "col-md-8">
+        <div class = "col-4">
             <input type="submit" value="Mark as complete" class="btn btn-light btn-sm">
             <input type = 'hidden' name = 'todo_id' value = {{ todo.id }}>
             <input type = 'hidden' name = 'todo_status' value = 1>
+        </form>
+    </div>
+        <div class = "col-4">
+            <form action = "{{ url_for('delete_todo') }}" method  = 'POST' >
+                <input type="submit" value="Delete" class="btn btn-dark btn-sm">
+                <input type="hidden" name="delete_todoid" value = {{ todo.id }}> 
             </form>
         </div>
         {% endfor %}    
@@ -26,12 +32,18 @@
         <div class = "col-4 text-dark">
             <form action = "{{ url_for('update_todo') }}" method = 'POST' ><s>{{ todo.text }}</s>
         </div>
-        <div class = "col-8">
+        <div class = "col-4">
         <input type="submit" value="Mark as incomplete" class="btn btn-dark btn-sm">
             <input type = 'hidden' name = 'todo_id' value = {{ todo.id }}>
             <input type = 'hidden' name = 'todo_status' value = 0>
             </form> 
         </div>    
+        <div class = "col-4">
+            <form action = "{{ url_for('delete_todo') }}" method  = 'POST' >
+                <input type="submit" value="Delete" class="btn btn-dark btn-sm">
+                <input type="hidden" name="delete_todoid" value = {{ todo.id }}> 
+            </form>
+        </div>
             {% endfor %}
     </div>
 </div>
