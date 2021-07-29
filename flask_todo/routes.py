@@ -73,7 +73,7 @@ def logout():
     logout_user()
     return redirect(url_for('login'))
 
-@app.route('/logout',methods = ['POST'])
+@app.route('/delete',methods = ['POST'])
 @login_required
 def delete_todo():
     delete_todo = request.form.get('delete_todoid') 
@@ -83,3 +83,12 @@ def delete_todo():
     db.session.commit()
     return redirect(url_for('todo'))
 
+@app.route('/deleting/<int:todoid>',methods = ['GET'])
+@login_required
+def deleting(todoid):
+    # delete_todo = request.form.get('post_id') 
+    todo_item = Todo.query.get(todoid)
+    # Todo.query.delete(todo_item)
+    db.session.delete(todo_item)
+    db.session.commit()
+    return redirect(url_for('todo'))

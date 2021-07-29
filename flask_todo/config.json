@@ -1,4 +1,4 @@
 {
-    "DB_URL": "postgresql://postgres:mysecretpassword@localhost:5432/flask_todo",
+    "DB_URL": "sqlite:///todo.db",
     "App_Secret_Key": "5791628bb0b13ce0c676dfde280ba245"
   }

@@ -5,14 +5,14 @@
 {% if title %}
     <title> {{ title }} </title>
 {% else %}
-    <title> Default Title </title>
+    <title> Todo App </title>
 {% endif %}
 </head>
 
 <body>
     <header>
         <nav class= 'navbar navbar-expand-sm navbar-light bg-light'>
-    <a href = "{{ url_for('login') }}" class = 'navbar-brand'> Flask-Todo</a>
+    <a href = "{{ url_for('login') }}" class = 'navbar-brand'> Todo-app</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
     </button>
@@ -59,4 +59,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </div>
+<footer class = "p-5 fs-6 fst-italic text-muted">
+    <p>Developer: Guru Prasad</p>
+    <p>Email : usguruprasad1996@gmail.com</p>
+  </footer>
 </html>
